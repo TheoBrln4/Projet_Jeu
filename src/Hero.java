@@ -41,7 +41,20 @@ public class Hero extends AnimatedThing{
 
     public void jump(){
         if(y >= 150+sizey){
-            f_y += 125;
+            f_y += 100;
+        }
+    }
+
+    @Override
+    public void UpdateAttitude(){
+        if(v_y>=0.1){
+            at = attitude.Jumping_Down;
+        }
+        else if(v_y<-0.1){
+            at = attitude.Jumping_Up;
+        }
+        else{
+            at = attitude.Running;
         }
     }
 
@@ -52,8 +65,9 @@ public class Hero extends AnimatedThing{
     @Override
     public void update(double t) {
         super.update(t);
+        UpdateAttitude();
 
-        a_y = (fm-1) - f_y/20;
+        a_y = (15) - f_y/0.2;
         v_y += a_y;
         y += v_y;
 
@@ -66,6 +80,7 @@ public class Hero extends AnimatedThing{
         a_x = f_x/20;
         v_x += a_x;
         x += v_x;
+
 
         setForce(0,0);
 

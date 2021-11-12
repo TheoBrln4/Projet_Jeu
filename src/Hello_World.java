@@ -17,7 +17,7 @@ public class Hello_World extends Application {
         primaryStage.setTitle("Runner Game");
         Group root = new Group();
         Pane pane = new Pane(root);
-        Camera cam = new Camera(100, 0);
+        Camera cam = new Camera(200, 0);
         Hero joueur = new Hero(100, 257);
 
         GameScene theScene = new GameScene(pane, 800, 400,true, cam, joueur);

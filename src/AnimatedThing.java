@@ -16,7 +16,7 @@ abstract public class AnimatedThing {
     protected double x;
     protected double y;
     private ImageView im;
-    enum attitude{Jumping_Up, Jumping_Down, Running};
+    enum attitude{Jumping_Up, Jumping_Down, Running}
     attitude at;
 
     int index;
@@ -53,11 +53,20 @@ abstract public class AnimatedThing {
         this.indexMax = 5;
         this.index = (int) ((t%(duration*indexMax))/this.duration);
 
-        this.im.setViewport(new Rectangle2D(index*(sizex+offset), 0, sizey*0.75+offset, 100));
-
+        if(this.at == attitude.Running) {
+            this.im.setViewport(new Rectangle2D(index * (sizex + offset), 0, sizey * 0.75 + offset, 100));
+        }
+        else if(this.at == attitude.Jumping_Up){
+            this.im.setViewport(new Rectangle2D(offset, 100, sizex+offset, sizey));
+        }
+        else if(this.at == attitude.Jumping_Down){
+            this.im.setViewport(new Rectangle2D(95, 100, sizex + offset, sizey));
+        }
     }
 
     public ImageView getim(){
         return im;
     }
+
+    public abstract void UpdateAttitude(); //ok
 }

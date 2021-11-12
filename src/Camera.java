@@ -28,12 +28,16 @@ public class Camera {
 
     public void update(double t, Hero joueur){
 
-        ax = joueur.getx() - 100 + fm*vx;
-        vx += ax;
-        x += vx;
+        double x_joueur=joueur.getx();
+        double y_joueur=joueur.gety();
 
-        ay = joueur.gety() - 150 + fm*vy;
-        vy += ay;
-        //y += vy;
+        ax=km*(x_joueur-100-x)-fm*vx;
+        vx+=ax;
+        x+=vx;
+
+        ay=km*(y_joueur-250-y)-fm*vy;
+
+        vy+=ay;
+        y+=vy;
     }
 }

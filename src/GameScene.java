@@ -49,7 +49,7 @@ public class GameScene extends Scene {
         this.joueur.speed(1);
         parent.getChildren().add(this.joueur.getim());
 
-        /**this.setOnMouseClicked( (event)-> joueur.jump());
+        this.setOnMouseClicked( (event)-> joueur.jump());
         this.setOnKeyPressed(keyEvent -> {
             if(keyEvent.equals("SPACE")){
                 joueur.jump();
@@ -60,7 +60,7 @@ public class GameScene extends Scene {
             if(keyEvent.equals("Q")){
                 joueur.forceAug(-100);
             }
-        });**/
+        });
     }
 
     public void update(double t){
@@ -76,9 +76,9 @@ public class GameScene extends Scene {
         }
         else{
             right.getim().setX(desertSizeX * (rep-1) - camera.getx());
-            left.getim().setX(desertSizeX * rep * camera.getx());
+            left.getim().setX(desertSizeX * rep - camera.getx());
         }
-       // joueur.getim().setX(joueur.getx()-camera.getx());
-       // joueur.getim().setY(joueur.gety()-camera.gety());
+        joueur.getim().setX(joueur.getx()-camera.getx());
+        joueur.getim().setY(joueur.gety()-camera.gety());
     }
 }
